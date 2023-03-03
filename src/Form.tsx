@@ -1,13 +1,16 @@
 import React from 'react'
 import { Form, Button } from 'react-bootstrap'
+import { FormDataType } from './App'
 
-export const MusicForm: React.FC = () => {
-  const [formData, setFormData] = React.useState({
+export const MusicForm: React.FC<{
+  handleSendMelody: (formData: any) => void
+}> = ({ handleSendMelody }) => {
+  const [formData, setFormData] = React.useState<FormDataType>({
     mood: '',
     style: '',
     genre: '',
     mode: '',
-    numberofNotes: '',
+    numberOfNotes: '',
     inspiration: '',
   })
 
@@ -17,15 +20,8 @@ export const MusicForm: React.FC = () => {
       [e.target.name]: e.target.value,
     })
   }
-
-  const handleSubmit = e => {
-    e.preventDefault()
-    console.log(formData)
-    // Call OpenAI API with formData
-  }
-
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form>
       <div className="d-flex flex-column justify-content-between align-items-center mt-5">
         <Form.Group className="w-50 me-2">
           <Form.Label htmlFor="mood">Mood</Form.Label>
@@ -74,13 +70,13 @@ export const MusicForm: React.FC = () => {
 
       <div className="d-flex flex-column justify-content-between align-items-center">
         <Form.Group className="w-50 my-2">
-          <Form.Label htmlFor="numberofNotes">Number of Notes</Form.Label>
+          <Form.Label htmlFor="numberOfNotes">Number of Notes</Form.Label>
           <Form.Control
-            type="number"
-            id="numberofNotes"
-            name="numberofNotes"
+            type="text"
+            id="numberOfNotes"
+            name="numberOfNotes"
             onChange={handleChange}
-            value={formData.numberofNotes}
+            value={formData.numberOfNotes}
           />
         </Form.Group>
       </div>
@@ -98,7 +94,7 @@ export const MusicForm: React.FC = () => {
         </Form.Group>
       </div>
       <div className="mt-4 d-flex flex-column justify-content-between align-items-center">
-        <Button className="w-50" type="submit">
+        <Button className="w-50" onClick={() => handleSendMelody(formData)}>
           Generate Music
         </Button>
       </div>

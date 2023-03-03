@@ -11,18 +11,29 @@ Zfont.init(Zdog)
 const font: Zdog.Font = new Zdog.Font({
   src: NotoSans,
 })
+
+export interface FormDataType {
+  mood: string
+  style: string
+  genre: string
+  mode: string
+  numberOfNotes: string
+  inspiration: string
+}
+
 const App: React.FC = () => {
-  const handleSendMelody = () => {
+  const handleSendMelody = (formData: FormDataType) => {
+    const { mood, style, genre, mode, numberOfNotes, inspiration } = formData
     axios
       .post(
         'http://localhost:3000/sendosc',
         {
-          mood: 'sad',
-          style: 'jazz',
-          genre: 'fugue',
-          mode: 'minor',
-          numberOfNotes: 10,
-          inspiration: 'gershwin',
+          mood,
+          style,
+          genre,
+          mode,
+          numberOfNotes,
+          inspiration,
         },
         {
           headers: {
@@ -36,9 +47,8 @@ const App: React.FC = () => {
 
   return (
     <div className="app h-100">
-      {/* <h1 onClick={() => handleSendMelody()}>HELLO HACKATHON</h1> */}
       <div
-        style={{ height: 125, width: 300 }}
+        style={{ height: 100, width: 500 }}
         className="d-flex justify-self-center"
       >
         <Illustration
@@ -48,7 +58,7 @@ const App: React.FC = () => {
         >
           <ZText
             text="SlapGPT"
-            fontSize={40}
+            fontSize={50}
             font={font}
             stroke={4}
             color="#80bfff"
@@ -56,7 +66,7 @@ const App: React.FC = () => {
         </Illustration>
       </div>
 
-      <MusicForm />
+      <MusicForm handleSendMelody={handleSendMelody} />
     </div>
   )
 }
