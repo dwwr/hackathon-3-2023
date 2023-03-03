@@ -1,0 +1,26 @@
+.app {
+  background-color: #ff80df;
+}
+
+input {
+  background-color: #80bfff !important;
+  border-color: #ffff80 !important;
+  color: #ffff80 !important;
+  font-weight: bold;
+  font-style: italic;
+}
+
+label {
+  color: #ffff80 !important;
+  font-weight: bold;
+  font-style: italic;
+}
+
+button {
+  background-color: #ff8080 !important;
+  border: 3px solid #8080ff !important;
+  color: #ffff80 !important;
+  font-weight: bold;
+  font-size: 18px !important;
+  font-style: italic;
+}

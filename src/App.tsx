@@ -25,8 +25,8 @@ const App: React.FC = () => {
   }
 
   return (
-    <div className="app" onClick={() => handleSendMelody()}>
-      <h1 className="mb-5">HELLO HACKATHON</h1>
+    <div className="app h-100">
+      <h1 onClick={() => handleSendMelody()}>HELLO HACKATHON</h1>
       <MusicForm />
     </div>
   )

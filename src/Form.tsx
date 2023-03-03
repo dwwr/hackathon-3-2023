@@ -26,7 +26,7 @@ export const MusicForm: React.FC = () => {
 
   return (
     <Form onSubmit={handleSubmit}>
-      <div className="d-flex flex-column justify-content-between align-items-center">
+      <div className="d-flex flex-column justify-content-between align-items-center mt-5">
         <Form.Group className="w-50 me-2">
           <Form.Label htmlFor="mood">Mood</Form.Label>
           <Form.Control
@@ -37,7 +37,7 @@ export const MusicForm: React.FC = () => {
             value={formData.mood}
           />
         </Form.Group>
-        <Form.Group className="w-50 ms-2">
+        <Form.Group className="w-50 my-2">
           <Form.Label htmlFor="style">Style</Form.Label>
           <Form.Control
             type="text"
@@ -50,7 +50,7 @@ export const MusicForm: React.FC = () => {
       </div>
 
       <div className="d-flex flex-column justify-content-between align-items-center">
-        <Form.Group className="w-50 me-2">
+        <Form.Group className="w-50 my-2">
           <Form.Label htmlFor="genre">Genre</Form.Label>
           <Form.Control
             type="text"
@@ -60,7 +60,7 @@ export const MusicForm: React.FC = () => {
             value={formData.genre}
           />
         </Form.Group>
-        <Form.Group className="w-50 ms-2">
+        <Form.Group className="w-50 my-2">
           <Form.Label htmlFor="mode">Mode</Form.Label>
           <Form.Control
             type="text"
@@ -73,7 +73,7 @@ export const MusicForm: React.FC = () => {
       </div>
 
       <div className="d-flex flex-column justify-content-between align-items-center">
-        <Form.Group className="w-50 ms-2">
+        <Form.Group className="w-50 my-2">
           <Form.Label htmlFor="numberofNotes">Number of Notes</Form.Label>
           <Form.Control
             type="number"
@@ -86,7 +86,7 @@ export const MusicForm: React.FC = () => {
       </div>
 
       <div className="d-flex flex-column justify-content-between align-items-center">
-        <Form.Group className="w-50 ms-2">
+        <Form.Group className="w-50 my-2">
           <Form.Label htmlFor="inspiration">Inspiration</Form.Label>
           <Form.Control
             type="text"
@@ -97,7 +97,7 @@ export const MusicForm: React.FC = () => {
           />
         </Form.Group>
       </div>
-      <div className="mt-3 d-flex flex-column justify-content-between align-items-center">
+      <div className="mt-4 d-flex flex-column justify-content-between align-items-center">
         <Button className="w-50" type="submit">
           Generate Music
         </Button>
