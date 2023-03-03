@@ -6,11 +6,12 @@ const App: React.FC = () => {
       .post(
         'http://localhost:3000/sendosc',
         {
-          ip: '192.168.86.30',
-          port: '4560',
-          address: '/melody',
-          typeTag: 's',
-          args: '[60, 60, 67, 67, 69, 69, 67, 65, 64, 64]',
+          mood: 'sad',
+          style: 'jazz',
+          genre: 'fugue',
+          mode: 'modal',
+          numberOfNotes: 10,
+          inspiration: 'gershwin',
         },
         {
           headers: {

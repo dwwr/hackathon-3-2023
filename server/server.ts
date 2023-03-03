@@ -16,13 +16,22 @@ const configuration = new Configuration({
 const openai = new OpenAIApi(configuration)
 
 app.post('/sendosc', async (req, res) => {
+  console.log('request', req.body)
+  const { mood, style, genre, mode, numberofNotes, inspiration } = req.body
+  // {
+  //   mood: 'sad',
+  //   style: 'jazz',
+  //   genre: 'fugue',
+  //   mode: 'modal',
+  //   numberOfNotes: 10,
+  //   inspiration: 'gershwin',
+  // },
   let completion
   try {
     completion = await openai.createCompletion({
       model: 'text-davinci-003',
-      prompt:
-        'Please write me a melody for sonic pi. The number of notes must be between 10 and 40 and may not under any circumstances exceed 40. The notes must be within the range 20 to 100 and may not under any circumstances exceed 100. Your response must not contain any words and must be in the form of an array of numbers satisfying the stated conditions.',
-      temperature: 0.5,
+      prompt: `Please write me a melody for sonic pi. This melody should be in a ${mood} mood, with a ${style} style, in a ${mode} mode, in the ${genre} genre. The number of notes must be ${numberofNotes} and may not under any circumstances exceed 40. The melody should be inspired by the works of ${inspiration}. The notes must be within the range 20 to 100 and may not under any circumstances exceed 100. Your response must not contain any words and must be in the form of an array of numbers satisfying the stated conditions.`,
+      temperature: 0.75,
       max_tokens: 1024,
       n: 2,
     })
@@ -33,12 +42,8 @@ app.post('/sendosc', async (req, res) => {
   const args =
     completion?.data?.choices[0]?.text + completion?.data?.choices[1]?.text
   console.log(args)
-  const ip = req.body.ip
-  const port = req.body.port
-  const address = req.body.address
-  const typeTag = req.body.typeTag
 
-  const command = `sendosc ${ip} ${port} ${address} ${typeTag} "${args}"`
+  const command = `sendosc 192.168.86.30 4560 /melody s "${args}"`
   exec(command, error => {
     if (error) {
       console.error(`exec error: ${error}`)
