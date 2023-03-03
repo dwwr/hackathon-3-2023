@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios'
+import { MusicForm } from './Form'
 const App: React.FC = () => {
   const handleSendMelody = () => {
     axios
@@ -9,7 +10,7 @@ const App: React.FC = () => {
           mood: 'sad',
           style: 'jazz',
           genre: 'fugue',
-          mode: 'modal',
+          mode: 'minor',
           numberOfNotes: 10,
           inspiration: 'gershwin',
         },
@@ -25,7 +26,8 @@ const App: React.FC = () => {
 
   return (
     <div className="app" onClick={() => handleSendMelody()}>
-      HELLO HACKATHON
+      <h1 className="mb-5">HELLO HACKATHON</h1>
+      <MusicForm />
     </div>
   )
 }
